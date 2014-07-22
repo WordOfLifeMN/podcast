@@ -46,7 +46,7 @@ jar=$(findJar "$self")
 	exit 1
 }
 
-# track time spent
+# start tracking time for later reporting
 startTime=$(date +%s)
 
 # run the package, passing through parameters
