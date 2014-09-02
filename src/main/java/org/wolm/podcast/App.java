@@ -24,7 +24,6 @@ import org.wolm.google.RowFilter;
 import org.wolm.google.RowFilter_MaxCount;
 import org.wolm.google.RowFilter_Value;
 import org.wolm.google.RowFilter_ValueStartsWith;
-import org.wolm.google.RowFilter_Weekday;
 
 import com.amazonaws.services.s3.model.Bucket;
 import com.beust.jcommander.JCommander;
@@ -240,6 +239,10 @@ public class App {
 			throw new Exception("Worksheet '" + getWorksheetName() + "' has no 'audiolink' data.");
 		}
 
+		if (!worksheet.hasColumn("playlist")) {
+			throw new Exception("Worksheet '" + getWorksheetName() + "' has no 'playlist' data.");
+		}
+
 		// get all rows
 		List<GoogleRow> rows = worksheet.getRowsOrderedBy("date", false);
 		if (rows == null) {
@@ -250,7 +253,7 @@ public class App {
 		// start filtering the list of rows until we have something appropriate for the podcast
 		rows = RowFilter.filter(rows, new RowFilter_Value("visibility", "Public"));
 		rows = RowFilter.filter(rows, new RowFilter_ValueStartsWith("audiolink", "http"));
-		rows = RowFilter.filter(rows, new RowFilter_Weekday("date", getWeekdayName()));
+		rows = RowFilter.filter(rows, new RowFilter_Value("playlist", "Service"));
 		rows = RowFilter.filter(rows, new RowFilter_MaxCount(getMaximumMessagesInPodcast()));
 
 		// reverse so they are in chronological order again
