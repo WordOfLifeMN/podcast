@@ -70,11 +70,6 @@
 			<version>1.47.1</version>
 		</dependency>
 		<dependency>
-			<groupId>com.google.gdata</groupId>
-			<artifactId>gdata-spreadsheet</artifactId>
-			<version>3.0</version>
-		</dependency>
-		<dependency>
 			<groupId>org.easytesting</groupId>
 			<artifactId>fest-assert</artifactId>
 			<version>1.4</version>
@@ -100,6 +95,11 @@
 			<groupId>com.beust</groupId>
 			<artifactId>jcommander</artifactId>
 			<version>1.35</version>
+		</dependency>
+		<dependency>
+			<groupId>com.google.api.client</groupId>
+			<artifactId>google-api-data-spreadsheet-v3</artifactId>
+			<version>1.0.10-alpha</version>
 		</dependency>
 	</dependencies>
 </project>
