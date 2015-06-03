@@ -149,4 +149,5 @@ public class GoogleHelper {
 		if (password == null) throw new IllegalStateException("GoogleHelper has no password configured");
 		return true;
 	}
+
 }
