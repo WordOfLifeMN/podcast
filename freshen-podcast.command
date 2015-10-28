@@ -53,4 +53,4 @@ startTime=$(date +%s)
 java -jar "$jar" --verbose --upload "$@"
 
 echo "Completed in $(( $(date +%s) - $startTime )) seconds"
-sleep 5
+#sleep 5
