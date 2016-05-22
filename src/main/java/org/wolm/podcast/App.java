@@ -54,7 +54,7 @@ public class App {
 	private boolean verbose = false;
 
 	@Parameter(names = "--messageLog", description = "Name of the spreadsheet on the Google Drive that contains the message log")
-	private String spreadsheetName = "Messages";
+	private String spreadsheetName = "WOL Messages";
 
 	@Parameter(names = "--worksheet", description = "Name of the worksheet in the spreasheet that contains the message log")
 	private String worksheetName = "Media Log";
@@ -287,13 +287,13 @@ public class App {
 		outStream.println("    <category>Christian Sermon</category>");
 		outStream.println("    <ttl>60</ttl>");
 		outStream.println("    <image>");
-		outStream
-				.println("      <url>https://s3-us-west-2.amazonaws.com/wordoflife.mn.podcast/WordofLifeMinD72aR05aP01ZL.png</url>");
+		outStream.println(
+				"      <url>https://s3-us-west-2.amazonaws.com/wordoflife.mn.podcast/WordofLifeMinD72aR05aP01ZL.png</url>");
 		outStream.println("      <title>Word of Life Ministries</title>");
 		outStream.println("      <link>http://www.wordoflifemn.org/</link>");
 		outStream.println("    </image>");
-		outStream
-				.println("    <atom:link href=\"http://s3-us-west-2.amazonaws.com/wordoflife.mn.podcast/wolmn-service-podcast.rss.xml\" "
+		outStream.println(
+				"    <atom:link href=\"http://s3-us-west-2.amazonaws.com/wordoflife.mn.podcast/wolmn-service-podcast.rss.xml\" "
 						+ "rel=\"self\" type=\"application/rss+xml\" />");
 	}
 
@@ -377,13 +377,13 @@ public class App {
 		System.out.println("  CanEdit: " + worksheet.getCanEdit());
 	}
 
-	public void printWorksheetRows(GoogleWorksheet worksheet) throws AuthenticationException, IOException,
-			ServiceException {
+	public void printWorksheetRows(GoogleWorksheet worksheet)
+			throws AuthenticationException, IOException, ServiceException {
 		printWorksheetRows(worksheet, worksheet.getRows());
 	}
 
-	public void printWorksheetRows(GoogleWorksheet worksheet, List<GoogleRow> rows) throws AuthenticationException,
-			IOException, ServiceException {
+	public void printWorksheetRows(GoogleWorksheet worksheet, List<GoogleRow> rows)
+			throws AuthenticationException, IOException, ServiceException {
 		System.out.println("Worksheet: " + worksheet.getTitle());
 
 		// build list of columns (from set)
