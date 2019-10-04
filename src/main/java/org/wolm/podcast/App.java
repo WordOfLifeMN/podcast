@@ -361,13 +361,16 @@ public class App {
 	}
 
 	public void uploadPodcast(File file, PrintStream statusStream) throws Exception {
-		if (statusStream != null) statusStream.println("Uploading podcast to Amazon...");
+		if (statusStream != null) {
+			statusStream.println("Uploading podcast to Amazon...");
+			statusStream.println("  Uploading " + file.getAbsolutePath());
+		}
 
 		Bucket podcastBucket = s3Helper.getBucket(PODCAST_BUCKET_NAME);
 		if (podcastBucket == null) throw new Exception("Cannot find the podcast bucket: '" + PODCAST_BUCKET_NAME + "'");
 		s3Helper.uploadPublicFile(podcastBucket, PODCAST_KEY, file);
 
-		if (statusStream != null) statusStream.println("  Uploaded " + PODCAST_BUCKET_NAME + ":" + PODCAST_KEY);
+		if (statusStream != null) statusStream.println("  Uploaded to " + PODCAST_BUCKET_NAME + ":" + PODCAST_KEY);
 	}
 
 	public void printWorksheetStats(GoogleWorksheet worksheet) {

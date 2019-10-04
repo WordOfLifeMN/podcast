@@ -37,8 +37,8 @@ import com.google.gdata.util.ServiceException;
  * <ul>
  * <li>serviceAccountId=
  * </ul>
- * The Service Account ID is the "Email address" of the service account from the <a
- * href="https://console.developers.google.com/project">Developers Console</a>. The spreadsheets must be shared with
+ * The Service Account ID is the "Email address" of the service account from the
+ * <a href="https://console.developers.google.com/project">Developers Console</a>. The spreadsheets must be shared with
  * this account
  * <p>
  * The directory ~/.wolm must also contain the P12 key file for the service account
@@ -175,7 +175,7 @@ public class GoogleHelper {
 			}
 		});
 
-		if (p12KeyFiles.length > 0) {
+		if (p12KeyFiles != null && p12KeyFiles.length > 0) {
 			if (p12KeyFiles.length > 1) {
 				System.out
 						.println("WARNING: Multiple P12 Key Files were found, using the first one: " + p12KeyFiles[0]);
@@ -191,9 +191,14 @@ public class GoogleHelper {
 	 * @throws IllegalStateException if it is not configured correctly
 	 */
 	private boolean isConfigured() {
-		if (getServiceAccountId() == null) throw new IllegalStateException(
-				"GoogleHelper has no service account ID configured");
-		if (getP12KeyFile() == null) throw new IllegalStateException("GoogleHelper could not find a P12 Key File");
+		if (getServiceAccountId() == null) {
+			throw new IllegalStateException("GoogleHelper has no service account ID configured. "
+					+ "Was expecting to find the file /.wolm/google.properties containing the service ID.");
+		}
+		if (getP12KeyFile() == null) {
+			throw new IllegalStateException(
+					"GoogleHelper could not find a P12 Key file. Was expecting to find a ~/.wolm/*.p12 file.");
+		}
 		return true;
 	}
 
