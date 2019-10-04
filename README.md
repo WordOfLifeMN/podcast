@@ -21,8 +21,8 @@ serviceAccountId=BLAHBLAH-BLAHBLAH@developer.gserviceaccount.com
 ```
 $ cat ~/.wolm/aws.s3.properties 
 username=Media.Department
-accessKey=AKIAIAFQXYK6SIKCS76Q
-secretKey=SECRETSECRETSECRETSECRET
+accessKey=****************S76Q
+secretKey=****************GufJ
 ```
 
 ## Run
