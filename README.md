@@ -38,4 +38,7 @@ aws s3 cp s3://wordoflife.mn.podcast/wolmn-service-podcast.rss.xml .
 vi wolmn-service-podcast.rss.xml
 aws s3 cp --acl=public-read wolmn-service-podcast.rss.xml s3://wordoflife.mn.podcast/wolmn-service-podcast.rss.xml
 ```
-
+To see the sizes of uploaded audio files:
+```
+aws s3 ls s3://wordoflife.mn.audio/2021/
+```
